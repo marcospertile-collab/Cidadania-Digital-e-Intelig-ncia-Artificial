@@ -1,7 +1,6 @@
-// Aguarda o carregamento do DOM para iniciar os scripts de forma segura
 document.addEventListener("DOMContentLoaded", () => {
     
-    // --- FUNCIONALIDADE 1: Alternador de Modo Escuro ---
+    // --- 1. ALTERNADOR DINÂMICO DE MODO ESCURO ---
     const themeToggleBtn = document.getElementById("theme-toggle");
     
     themeToggleBtn.addEventListener("click", () => {
@@ -16,39 +15,50 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 
-    // --- FUNCIONALIDADE 2: Validador Dinâmico do Quiz ---
+    // --- 2. VALIDADOR DINÂMICO DO QUIZ COM MEDALHAS ---
     const quizForm = document.getElementById("quiz-form");
-    const resultBox = document.getElementById("quiz-result");
+    const quizResult = document.getElementById("quiz-result");
 
     quizForm.addEventListener("submit", (event) => {
-        // Impede a página de recarregar no envio do formulário
-        event.preventDefault();
+        event.preventDefault(); // Impede o recarregamento da tela
 
-        // Coleta e processa os dados marcados pelo usuário
-        const answer1 = document.querySelector('input[name="q1"]:checked').value;
-        const answer2 = document.querySelector('input[name="q2"]:checked').value;
+        const q1 = document.querySelector('input[name="q1"]:checked').value;
+        const q2 = document.querySelector('input[name="q2"]:checked').value;
         
-        let score = 0;
+        let acertos = 0;
+        if (q1 === "correto") acertos++;
+        if (q2 === "correto") acertos++;
 
-        if (answer1 === "errado") { score++; } // No HTML, a opção correta conceitualmente recebeu a tag de valor diferente para o gabarito
-        if (answer2 === "correto") { score++; }
+        quizResult.classList.remove("hidden", "sucesso", "erro");
 
-        // Manipulação dinâmica do DOM para mostrar o resultado na tela
-        resultBox.classList.remove("hidden");
-        resultBox.classList.add("success");
-        
-        if (score === 2) {
-            resultBox.textContent = `Excelente! Você acertou ${score} de 2 perguntas. Você sabe identificar desinformação!`;
+        if (acertos === 2) {
+            quizResult.classList.add("sucesso");
+            quizResult.innerHTML = `🥇 Parabéns! Você acertou ${acertos}/2 e conquistou a Medalha de Cidadão Vigilante!`;
         } else {
-            resultBox.textContent = `Você acertou ${score} de 2 perguntas. Continue lendo nossos cards para se proteger melhor!`;
+            quizResult.classList.add("erro");
+            quizResult.innerHTML = `🧐 Você acertou ${acertos}/2. Quase lá! Estude os cards acima e tente novamente para ganhar sua insígnia.`;
         }
     });
 
-    // --- FUNCIONALIDADE 3: Feedback do Formulário de Alerta ---
+    // --- 3. FEEDBACK DO FORMULÁRIO DE DENÚNCIA ---
     const reportForm = document.getElementById("report-form");
     reportForm.addEventListener("submit", (event) => {
         event.preventDefault();
-        alert("Obrigado pelo envio! Nossa comunidade analisará o link reportado em breve.");
+        alert("🚨 Alerta enviado com sucesso! Nosso algoritmo comunitário registrou seu relato para análise.");
         reportForm.reset();
     });
 });
+
+// --- 4. MECÂNICA EXCLUSIVA: SIMULADOR DETETIVE IA ---
+function verificarCaso(escolhaUsuario) {
+    const feedback = document.getElementById("simulador-feedback");
+    feedback.classList.remove("hidden", "sucesso", "erro");
+
+    if (escolhaUsuario === 'fake') {
+        feedback.classList.add("sucesso");
+        feedback.innerHTML = "🎯 Resposta Correta! Voz trêmula, fundo borrado e promessas de pânico financeiro sem fontes secundárias oficiais são assinaturas clássicas de uma Deepfake maliciosa feita para gerar caos social.";
+    } else {
+        feedback.classList.add("erro");
+        feedback.innerHTML = "❌ Atenção! Você caiu no golpe da IA. Esse conteúdo possui fortes indícios de manipulação digital e dados falsos. Sempre cheque os sinais visuais antes de confiar.";
+    }
+}
