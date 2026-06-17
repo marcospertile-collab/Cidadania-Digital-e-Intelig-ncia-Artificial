@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portal Cidadania Digital & IA</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="header-container">
+        <div class="logo">Cidadania<span>Digital</span></div>
+        <nav>
+            <ul class="nav-menu">
+                <li><a href="#home">Início</a></li>
+                <li><a href="#deepfakes">Deepfakes</a></li>
+                <li><a href="#quiz-section">Desafio Quiz</a></li>
+                <li><a href="#denuncie">Denuncie</a></li>
+            </ul>
+        </nav>
+        <button id="theme-toggle" class="btn-toggle" aria-label="Alternar modo de cor">🌓 Modo Escuro</button>
+    </header>
+
+    <main>
+        <section id="home" class="hero-section">
+            <div class="hero-content">
+                <h1>O Impacto das Deepfakes na Sociedade</h1>
+                <p>A inteligência artificial transformou a criação de conteúdos. Aprenda a navegar de forma segura e a exercer sua cidadania digital combatendo a desinformação automatizada.</p>
+                <a href="#quiz-section" class="btn-primary">Testar Meus Conhecimentos</a>
+            </div>
+        </section>
+
+        <section id="deepfakes" class="info-section">
+            <h2>Como Identificar Mídias Manipuladas</h2>
+            <div class="card-container">
+                <div class="card">
+                    <h3>👁️ Pistas Visuais</h3>
+                    <p>Fique atento a piscadas não naturais, reflexos estranhos nos olhos, sombras desalinhadas e falhas nas bordas do rosto ou cabelo.</p>
+                </div>
+                <div class="card">
+                    <h3>🔊 Inconsistências de Áudio</h3>
+                    <p>Vozes robóticas, falta de entonação emocional, ruídos de fundo inexplicáveis ou falas que não sincronizam perfeitamente com os lábios.</p>
+                </div>
+                <div class="card">
+                    <h3>💡 Análise de Contexto</h3>
+                    <p>Sempre desconfie de declarações bombásticas de figuras públicas. Busque a mesma notícia em veículos de imprensa profissionais e confiáveis.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="quiz-section" class="quiz-container">
+            <h2>Quiz Anti-Desinformação</h2>
+            <p>Você sabe diferenciar um fato de uma manipulação por IA? Responda abaixo:</p>
+            
+            <form id="quiz-form">
+                <div class="quiz-item">
+                    <p class="question">1. Um vídeo mostra uma figura pública agindo de forma absurda, mas o link veio de um grupo de mensagens sem fonte oficial. O que fazer?</p>
+                    <label class="radio-label">
+                        <input type="radio" name="q1" value="correto" required> Compartilhar imediatamente para alertar mais pessoas.
+                    </label>
+                    <label class="radio-label">
+                        <input type="radio" name="q1" value="errado"> Não compartilhar e verificar em agências de checagem de fatos.
+                    </label>
+                </div>
+
+                <div class="quiz-item">
+                    <p class="question">2. Qual dessas características pode indicar um áudio gerado de forma sintética por uma IA?</p>
+                    <label class="radio-label">
+                        <input type="radio" name="q2" value="errado"> Pausas perfeitamente naturais e respiração realista.
+                    </label>
+                    <label class="radio-label">
+                        <input type="radio" name="q2" value="correto"> Falta de ritmo emocional e cortes abruptos entre palavras.
+                    </label>
+                </div>
+
+                <button type="submit" class="btn-submit">Enviar Respostas</button>
+            </form>
+            <div id="quiz-result" class="result-box hidden"></div>
+        </section>
+
+        <section id="denuncie" class="form-section">
+            <h2>Canal de Alerta Comunitário</h2>
+            <p>Encontrou um link suspeito de desinformação? Reporte aqui para nossa análise comunitária.</p>
+            <form id="report-form" action="#" method="POST">
+                <div class="form-group">
+                    <label for="user-name">Nome Completo</label>
+                    <input type="text" id="user-name" name="name" placeholder="Seu nome" required>
+                </div>
+                <div class="form-group">
+                    <label for="suspect-url">Link ou Descrição da Mídia</label>
+                    <input type="url" id="suspect-url" name="url" placeholder="https://exemplo.com" required>
+                </div>
+                <div class="form-group">
+                    <label for="message">Detalhes Adicionais</label>
+                    <textarea id="message" name="message" rows="4" placeholder="Por que você acha que este conteúdo é uma deepfake?" required></textarea>
+                </div>
+                <button type="submit" class="btn-primary">Enviar Alerta</button>
+            </form>
+        </section>
+    </main>
+
+    <footer class="footer-container">
+        <p>&copy; 2026 - Projeto Cidadania Digital e Inteligência Artificial. Desenvolvido para fins educacionais.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
