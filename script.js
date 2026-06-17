@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
     
-    // --- 1. ALTERNADOR DINÂMICO DE MODO ESCURO ---
+    // --- 1. Alternador de Tema Cyber (Neon Cyan vs Neon Pink) ---
     const themeToggleBtn = document.getElementById("theme-toggle");
     
     themeToggleBtn.addEventListener("click", () => {
@@ -8,19 +8,19 @@ document.addEventListener("DOMContentLoaded", () => {
         
         if (currentTheme === "dark") {
             document.documentElement.setAttribute("data-theme", "light");
-            themeToggleBtn.textContent = "🌓 Modo Escuro";
+            themeToggleBtn.textContent = "🌓 Interface Ciano";
         } else {
             document.documentElement.setAttribute("data-theme", "dark");
-            themeToggleBtn.textContent = "☀️ Modo Claro";
+            themeToggleBtn.textContent = "☀️ Interface Rosa";
         }
     });
 
-    // --- 2. VALIDADOR DINÂMICO DO QUIZ COM MEDALHAS ---
+    // --- 2. Validador de Respostas do Quiz ---
     const quizForm = document.getElementById("quiz-form");
     const quizResult = document.getElementById("quiz-result");
 
     quizForm.addEventListener("submit", (event) => {
-        event.preventDefault(); // Impede o recarregamento da tela
+        event.preventDefault();
 
         const q1 = document.querySelector('input[name="q1"]:checked').value;
         const q2 = document.querySelector('input[name="q2"]:checked').value;
@@ -29,36 +29,36 @@ document.addEventListener("DOMContentLoaded", () => {
         if (q1 === "correto") acertos++;
         if (q2 === "correto") acertos++;
 
-        quizResult.classList.remove("hidden", "sucesso", "erro");
-
+        quizResult.classList.remove("hidden");
+        
         if (acertos === 2) {
-            quizResult.classList.add("sucesso");
-            quizResult.innerHTML = `🥇 Parabéns! Você acertou ${acertos}/2 e conquistou a Medalha de Cidadão Vigilante!`;
+            quizResult.style.background = "#059669";
+            quizResult.innerHTML = `🥇 Diagnóstico Concluído: Sistema 100% Protegido! Você acertou todas as questões.`;
         } else {
-            quizResult.classList.add("erro");
-            quizResult.innerHTML = `🧐 Você acertou ${acertos}/2. Quase lá! Estude os cards acima e tente novamente para ganhar sua insígnia.`;
+            quizResult.style.background = "#dc2626";
+            quizResult.innerHTML = `🧐 Alerta de Sistema: Você acertou ${acertos}/2. Analise os sinais nos cards tridimensionais e tente novamente.`;
         }
     });
 
-    // --- 3. FEEDBACK DO FORMULÁRIO DE DENÚNCIA ---
+    // --- 3. Envio de Relatório Comunitário ---
     const reportForm = document.getElementById("report-form");
     reportForm.addEventListener("submit", (event) => {
         event.preventDefault();
-        alert("🚨 Alerta enviado com sucesso! Nosso algoritmo comunitário registrou seu relato para análise.");
+        alert("🚨 Alerta enviado à rede! Obrigado por fortalecer nossa cidadania digital.");
         reportForm.reset();
     });
 });
 
-// --- 4. MECÂNICA EXCLUSIVA: SIMULADOR DETETIVE IA ---
+// --- 4. Controle do Simulador Detetive IA ---
 function verificarCaso(escolhaUsuario) {
     const feedback = document.getElementById("simulador-feedback");
-    feedback.classList.remove("hidden", "sucesso", "erro");
+    feedback.classList.remove("hidden");
 
     if (escolhaUsuario === 'fake') {
-        feedback.classList.add("sucesso");
-        feedback.innerHTML = "🎯 Resposta Correta! Voz trêmula, fundo borrado e promessas de pânico financeiro sem fontes secundárias oficiais são assinaturas clássicas de uma Deepfake maliciosa feita para gerar caos social.";
+        feedback.style.background = "#059669";
+        feedback.innerHTML = "🎯 Fusão de Dados Correta! Bordas piscando e pânico artificial sem links oficiais são evidências matemáticas de desinformação por IA.";
     } else {
-        feedback.classList.add("erro");
-        feedback.innerHTML = "❌ Atenção! Você caiu no golpe da IA. Esse conteúdo possui fortes indícios de manipulação digital e dados falsos. Sempre cheque os sinais visuais antes de confiar.";
+        feedback.style.background = "#dc2626";
+        feedback.innerHTML = "❌ Erro de Detecção! Você foi enganado pela IA. Preste atenção nas falhas de renderização antes de validar uma mídia.";
     }
 }
