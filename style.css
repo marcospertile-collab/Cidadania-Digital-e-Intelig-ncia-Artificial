@@ -1,13 +1,13 @@
-/* Variáveis de Cores e Configurações Globais */
+/* Variáveis para Mudança Dinâmica de Temas */
 :root {
-    --bg-color: #f4f7f6;
-    --text-color: #2c3e50;
+    --bg-color: #f8fafc;
+    --text-color: #1e293b;
     --header-bg: #ffffff;
     --card-bg: #ffffff;
     --accent-color: #2563eb;
     --accent-hover: #1d4ed8;
     --border-color: #e2e8f0;
-    --quiz-bg: #eaeded;
+    --section-bg-alt: #f1f5f9;
 }
 
 [data-theme="dark"] {
@@ -18,39 +18,39 @@
     --accent-color: #38bdf8;
     --accent-hover: #0ea5e9;
     --border-color: #334155;
-    --quiz-bg: #1e293b;
+    --section-bg-alt: #1e293b;
 }
 
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    transition: background-color 0.3s ease, color 0.3s ease;
+    transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease;
 }
 
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Segoe UI', system-ui, sans-serif;
     background-color: var(--bg-color);
     color: var(--text-color);
     line-height: 1.6;
 }
 
-/* Header e Menu Funcional */
+/* Menu de Navegação Superior Fixo */
 .header-container {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1rem 5%;
+    padding: 1.2rem 5%;
     background-color: var(--header-bg);
-    border-bottom: 1px solid var(--border-color);
+    border-bottom: 2px solid var(--border-color);
     position: sticky;
     top: 0;
     z-index: 1000;
 }
 
 .logo {
-    font-size: 1.5rem;
-    font-weight: bold;
+    font-size: 1.6rem;
+    font-weight: 800;
 }
 
 .logo span {
@@ -60,13 +60,14 @@ body {
 .nav-menu {
     display: flex;
     list-style: none;
-    gap: 2rem;
+    gap: 1.5rem;
 }
 
 .nav-menu a {
     text-decoration: none;
     color: var(--text-color);
-    font-weight: 500;
+    font-weight: 600;
+    padding: 0.5rem;
 }
 
 .nav-menu a:hover {
@@ -75,160 +76,229 @@ body {
 
 .btn-toggle {
     background: none;
-    border: 1px solid var(--border-color);
-    padding: 0.5rem 1rem;
+    border: 2px solid var(--accent-color);
+    padding: 0.5rem 1.2rem;
     cursor: pointer;
-    border-radius: 20px;
+    border-radius: 30px;
     color: var(--text-color);
+    font-weight: bold;
 }
 
-/* Seções e Layout */
+/* Seções e Espaçamentos */
 section {
-    padding: 4rem 5%;
+    padding: 5rem 8%;
 }
 
 .hero-section {
+    text-align: center;
+    min-height: 70vh;
     display: flex;
     align-items: center;
     justify-content: center;
-    text-align: center;
-    min-height: 60vh;
-    background: linear-gradient(135deg, rgba(37,99,235,0.1) 0%, rgba(56,189,248,0.1) 100%);
+    background: linear-gradient(135deg, rgba(37,99,235,0.08) 0%, rgba(56,189,248,0.08) 100%);
 }
 
 .hero-content h1 {
-    font-size: 2.5rem;
-    margin-bottom: 1rem;
+    font-size: 3rem;
+    margin-bottom: 1.5rem;
+    line-height: 1.2;
 }
 
 .hero-content p {
-    max-width: 600px;
-    margin: 0 auto 2rem auto;
+    font-size: 1.2rem;
+    max-width: 750px;
+    margin: 0 auto 2.5rem;
 }
 
-/* Cards com Flexbox */
-.info-section h2, .quiz-container h2, .form-section h2 {
-    text-align: center;
-    margin-bottom: 2rem;
+.hero-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
 }
 
+/* Flexbox Avançado para Cards */
 .card-container {
     display: flex;
     gap: 2rem;
     flex-wrap: wrap;
     justify-content: center;
+    margin-top: 2.5rem;
 }
 
 .card {
     background-color: var(--card-bg);
     border: 1px solid var(--border-color);
-    padding: 2rem;
-    border-radius: 8px;
+    padding: 2.5rem;
+    border-radius: 12px;
     flex: 1;
     min-width: 280px;
-    max-width: 350px;
-    box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
+    max-width: 360px;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05);
 }
 
 .card:hover {
-    transform: translateY(-5px);
-    transition: transform 0.2s ease;
+    transform: translateY(-8px);
+    border-color: var(--accent-color);
 }
 
-/* Quiz e Formulários */
-.quiz-container, .form-section {
-    max-width: 700px;
-    margin: 0 auto;
-    background-color: var(--quiz-bg);
-    border-radius: 8px;
+/* Caixa do Novo Simulador Interativo */
+.simulador-section, .quiz-container, .form-section, .fontes-section {
+    max-width: 800px;
+    margin: 2rem auto;
+    background-color: var(--section-bg-alt);
+    border-radius: 16px;
     border: 1px solid var(--border-color);
+    box-shadow: 0 4px 6px -1px rgba(0,0,0,0.02);
 }
 
-.quiz-item {
+.simulador-box {
+    background-color: var(--header-bg);
+    padding: 2rem;
+    border-radius: 12px;
+    border: 1px solid var(--border-color);
+    margin-top: 1.5rem;
+    text-align: center;
+}
+
+.midia-placeholder {
+    padding: 1.5rem;
+    background-color: var(--bg-color);
+    border-radius: 8px;
     margin-bottom: 1.5rem;
+    border-left: 5px solid #f59e0b;
 }
 
-.question {
-    font-weight: 600;
-    margin-bottom: 0.5rem;
-}
-
-.radio-label {
+.emoji-animado {
+    font-size: 2.5rem;
     display: block;
-    margin-bottom: 0.5rem;
-    cursor: pointer;
+    margin-bottom: 1rem;
 }
 
+.simulador-controls {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+}
+
+/* Botões do Simulador */
+.btn-simula {
+    padding: 0.8rem 2rem;
+    border: none;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+    font-size: 1rem;
+}
+.btn-simula.real { background-color: #10b981; color: white; }
+.btn-simula.fake { background-color: #ef4444; color: white; }
+
+/* Grid de Fontes Confiáveis */
+.fontes-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 1rem;
+    margin-top: 1.5rem;
+}
+
+.fonte-link {
+    display: block;
+    padding: 1rem;
+    background-color: var(--header-bg);
+    border: 1px solid var(--border-color);
+    text-align: center;
+    border-radius: 8px;
+    text-decoration: none;
+    color: var(--text-color);
+    font-weight: bold;
+}
+
+.fonte-link:hover {
+    background-color: var(--accent-color);
+    color: white;
+}
+
+/* Formulários e Inputs */
 .form-group {
-    margin-bottom: 1.25rem;
+    margin-bottom: 1.5rem;
+    text-align: left;
 }
 
 .form-group label {
     display: block;
     margin-bottom: 0.5rem;
-    font-weight: 500;
+    font-weight: bold;
 }
 
-input[type="text"], input[type="url"], textarea {
+input[type="text"], textarea {
     width: 100%;
-    padding: 0.75rem;
+    padding: 0.8rem;
     border: 1px solid var(--border-color);
-    border-radius: 4px;
+    border-radius: 6px;
     background-color: var(--header-bg);
     color: var(--text-color);
 }
 
-/* Botões */
+/* Botões Gerais */
 .btn-primary, .btn-submit {
-    display: inline-block;
     background-color: var(--accent-color);
     color: white;
-    padding: 0.75rem 1.5rem;
+    padding: 0.8rem 2rem;
     border: none;
-    border-radius: 4px;
-    text-decoration: none;
-    font-weight: 600;
+    border-radius: 6px;
+    font-weight: bold;
     cursor: pointer;
+    text-decoration: none;
 }
 
-.btn-primary:hover, .btn-submit:hover {
-    background-color: var(--accent-hover);
+.btn-secondary {
+    border: 2px solid var(--accent-color);
+    color: var(--text-color);
+    padding: 0.8rem 2rem;
+    border-radius: 6px;
+    font-weight: bold;
+    text-decoration: none;
 }
 
-.result-box {
+.btn-primary:hover, .btn-submit:hover, .btn-secondary:hover {
+    opacity: 0.9;
+    transform: scale(1.03);
+}
+
+.feedback-box, .result-box {
     margin-top: 1.5rem;
-    padding: 1rem;
-    border-radius: 4px;
-    text-align: center;
+    padding: 1.2rem;
+    border-radius: 8px;
     font-weight: bold;
 }
 
-.success { background-color: #10b981; color: white; }
+.sucesso { background-color: #10b981; color: white; }
+.erro { background-color: #ef4444; color: white; }
 .hidden { display: none; }
 
 /* Rodapé */
 .footer-container {
     text-align: center;
-    padding: 2rem;
+    padding: 2.5rem;
     background-color: var(--header-bg);
-    border-top: 1px solid var(--border-color);
-    font-size: 0.9rem;
+    border-top: 2px solid var(--border-color);
+    font-size: 0.95rem;
 }
 
-/* Responsividade (Media Queries) */
+/* Responsividade Completa (Media Queries) */
 @media (max-width: 768px) {
     .header-container {
         flex-direction: column;
-        gap: 1rem;
+        gap: 1.2rem;
+        text-align: center;
     }
-    
     .nav-menu {
-        gap: 1rem;
-        flex-wrap: wrap;
-        justify-content: center;
+        flex-direction: column;
+        gap: 0.8rem;
     }
-
     .hero-content h1 {
         font-size: 2rem;
+    }
+    .hero-buttons {
+        flex-direction: column;
     }
 }
